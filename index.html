@@ -1910,10 +1910,10 @@
   // API CONFIG สำหรับ GitHub Pages
   // =============================
   // เปลี่ยนเป็น URL /exec ของ Apps Script หรือ URL Cloudflare Worker ของคุณ
-  const API_URL = 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+  const API_URL = 'https://script.google.com/a/macros/thamai.ac.th/s/AKfycbxl_pbD03W91Oip2uc9Uy7TYN566ez0HvVBEHzbfeUC-Yb63hIv6UrhJKGNJPpoR4pn/exec';
 
   async function apiCall(action, payload = {}) {
-    if (!API_URL || API_URL === 'PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE') {
+    if (!API_URL || API_URL === 'https://script.google.com/a/macros/thamai.ac.th/s/AKfycbxl_pbD03W91Oip2uc9Uy7TYN566ez0HvVBEHzbfeUC-Yb63hIv6UrhJKGNJPpoR4pn/exec') {
       throw new Error('กรุณาตั้งค่า API_URL ก่อนใช้งานระบบ');
     }
 
