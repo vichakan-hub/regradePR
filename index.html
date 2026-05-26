@@ -1727,6 +1727,47 @@
     #approvalTable td:nth-child(7)::before{content:"เกรดใหม่";}
     #approvalTable td:nth-child(8)::before{content:"สถานะ";}
     #approvalTable td:nth-child(9)::before{content:"อนุมัติ";}
+
+    /* มือถือ: ตัดเมนู/หน้า รายการผลการสอบแก้ตัวทั้งหมด ออก */
+    #allRecordsMenuBtn,
+    #pageAllRecords{
+      display:none !important;
+    }
+
+    /* มือถือ: เน้นหน้า แก้ไข/ลบ ให้เป็น card อ่านง่าย */
+    #pageManage .table-card{
+      padding:14px;
+    }
+
+    #pageManage #manageTable tbody tr{
+      border-left:5px solid var(--primary);
+    }
+
+    #pageManage #manageTable td:nth-child(3){
+      font-size:16px !important;
+      font-weight:600;
+      color:var(--text) !important;
+    }
+
+    #pageManage #manageTable td:nth-child(10){
+      padding-top:12px !important;
+    }
+
+    #pageManage #manageTable td:nth-child(10)::before{
+      align-self:center;
+    }
+
+    #pageManage .action-group{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    #pageManage .mini-btn{
+      width:100%;
+      min-height:40px;
+      border-radius:12px;
+    }
   }
 
   @media (max-width: 420px){
@@ -2545,6 +2586,11 @@ async function apiCall(action, payload = {}) {
     return /^G/i.test(String(state.teacher?.teacherCode || '').trim());
   }
 
+
+  function isMobileView() {
+    return window.matchMedia('(max-width: 767.98px)').matches;
+  }
+
   function setLoggedInUI(isLoggedIn) {
     const navMenu = el('navMenu');
     const topbarSection = el('topbarSection');
@@ -2559,7 +2605,7 @@ async function apiCall(action, payload = {}) {
       teacherBadge && teacherBadge.classList.remove('d-none');
 
       if (allRecordsMenuBtn) {
-        allRecordsMenuBtn.classList.toggle('d-none', !isTeacherUser());
+        allRecordsMenuBtn.classList.toggle('d-none', !isTeacherUser() || isMobileView());
       }
 
       if (approvalMenuBtn) {
@@ -2589,7 +2635,7 @@ async function apiCall(action, payload = {}) {
 
     if (menuAdd) menuAdd.style.display = isT ? 'inline-flex' : 'none';
     if (menuManage) menuManage.style.display = isT ? 'inline-flex' : 'none';
-    if (menuAllRecords) menuAllRecords.style.display = isT ? 'inline-flex' : 'none';
+    if (menuAllRecords) menuAllRecords.style.display = (isT && !isMobileView()) ? 'inline-flex' : 'none';
     if (menuApproval) menuApproval.style.display = isG ? 'inline-flex' : 'none';
 
     const saveBtn = el('saveBtn');
@@ -2623,7 +2669,7 @@ async function apiCall(action, payload = {}) {
       pageId = 'pageHome';
     }
 
-    if (pageId === 'pageAllRecords' && !isTeacherUser()) {
+    if (pageId === 'pageAllRecords' && (!isTeacherUser() || isMobileView())) {
       pageId = 'pageHome';
     }
 
@@ -3161,7 +3207,7 @@ function renderteacherFirstNametime(teacherFirstName, time) {
 
       if (activePage === 'pageManage') {
         loadManageTable(false, false);
-      } else if (activePage === 'pageAllRecords') {
+      } else if (activePage === 'pageAllRecords' && !isMobileView()) {
         loadAllRecordsTable(false, false);
       } else if (activePage === 'pageApproval') {
         loadApprovalTable(false, false);
@@ -3208,7 +3254,7 @@ function renderteacherFirstNametime(teacherFirstName, time) {
 
         loadManageTable(false, true);
 
-        if (isTeacherUser()) {
+        if (isTeacherUser() && !isMobileView()) {
           loadAllRecordsTable(false, true);
         } else {
           destroyTableInstance('#allRecordsTable');
@@ -3523,7 +3569,7 @@ function renderteacherFirstNametime(teacherFirstName, time) {
         showPage(pageId);
 
         if (pageId === 'pageManage') loadManageTable(false, true);
-        if (pageId === 'pageAllRecords' && isTeacherUser()) loadAllRecordsTable(false, true);
+        if (pageId === 'pageAllRecords' && isTeacherUser() && !isMobileView()) loadAllRecordsTable(false, true);
         if (pageId === 'pageApproval' && isApproverUser()) loadApprovalTable(false, true);
       });
     });
@@ -3597,8 +3643,22 @@ function renderteacherFirstNametime(teacherFirstName, time) {
 
       const activePage = getActivePageId();
       if (activePage === 'pageManage') loadManageTable(false, false);
-      if (activePage === 'pageAllRecords' && isTeacherUser()) loadAllRecordsTable(false, false);
+      if (activePage === 'pageAllRecords' && isTeacherUser() && !isMobileView()) loadAllRecordsTable(false, false);
       if (activePage === 'pageApproval' && isApproverUser()) loadApprovalTable(false, false);
+    });
+  }
+
+
+  function bindResponsiveEvents() {
+    window.addEventListener('resize', () => {
+      toggleRoleUI();
+      const allRecordsMenuBtn = el('allRecordsMenuBtn');
+      if (allRecordsMenuBtn) {
+        allRecordsMenuBtn.classList.toggle('d-none', !isTeacherUser() || isMobileView());
+      }
+      if (isMobileView() && getActivePageId() === 'pageAllRecords') {
+        showPage('pageHome');
+      }
     });
   }
 
@@ -3612,6 +3672,7 @@ function renderteacherFirstNametime(teacherFirstName, time) {
     bindButtonEvents();
     bindEnterLogin();
     bindVisibilityEvents();
+    bindResponsiveEvents();
 
     if (el('academicYear') && !el('academicYear').value) {
       el('academicYear').value = '2568';
