@@ -3,7 +3,7 @@
 <head>
   <base target="_top">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=1600, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>ระบบบันทึกผลการสอบแก้ตัว 2/2568</title>
 
@@ -1322,7 +1322,446 @@
 
 
 }
-  </style>
+  
+  /* =====================================================
+     MOBILE RESPONSIVE PATCH
+     ใช้สำหรับ GitHub Pages / มือถือ / แท็บเล็ต
+     ===================================================== */
+  @media (max-width: 991.98px){
+    .app-shell{
+      width:100%;
+      margin:0;
+      padding:14px;
+    }
+
+    .top-hero{
+      flex-direction:column;
+      align-items:flex-start;
+      border-radius:24px;
+      padding:18px;
+      gap:16px;
+    }
+
+    .hero-right,
+    .hero-stat-card{
+      width:100%;
+      min-width:0;
+    }
+
+    .hero-stat-card{
+      padding:14px;
+      border-radius:20px;
+    }
+
+    .topbar-glass{
+      flex-direction:column;
+      align-items:stretch;
+      border-radius:22px;
+      padding:14px;
+    }
+
+    .topbar-left,
+    .topbar-right{
+      width:100%;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .teacher-badge{
+      width:100%;
+      font-size:14px;
+    }
+
+    .app-nav{
+      position:sticky;
+      top:0;
+      z-index:900;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      padding:10px;
+      border-radius:18px;
+      gap:8px;
+      scrollbar-width:none;
+    }
+
+    .app-nav::-webkit-scrollbar{
+      display:none;
+    }
+
+    .nav-pill{
+      flex:0 0 auto;
+      padding:10px 12px;
+      font-size:14px;
+      border-radius:14px;
+      white-space:nowrap;
+    }
+
+    .glass-card{
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .card-title{
+      font-size:24px;
+    }
+
+    .card-head,
+    .form-card-head,
+    .table-card-head{
+      gap:12px;
+    }
+
+    .card-icon{
+      width:50px;
+      height:50px;
+      border-radius:16px;
+      font-size:21px;
+    }
+
+    .action-bar{
+      align-items:stretch;
+      flex-direction:column;
+    }
+
+    .action-buttons{
+      display:grid;
+      grid-template-columns:1fr;
+      width:100%;
+    }
+
+    .action-buttons .btn,
+    .btn-main,
+    .btn-soft{
+      width:100%;
+    }
+
+    .connextED-btn{
+      width:100%;
+      font-size:18px;
+    }
+
+    .msg-overlay-card{
+      min-width:0;
+      width:calc(100vw - 28px);
+      max-width:calc(100vw - 28px);
+      border-radius:24px;
+      padding:24px 18px 20px;
+    }
+  }
+
+  @media (max-width: 767.98px){
+    html,body{
+      width:100%;
+      overflow-x:hidden;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, #A794FF 4%, #FF82EE 36%, #68F7FF 100%);
+    }
+
+    .app-shell{
+      padding:10px;
+    }
+
+    .main-space{
+      margin-top:12px;
+    }
+
+    .top-hero{
+      padding:16px;
+      border-radius:20px;
+    }
+
+    .hero-badge{
+      font-size:12px;
+      line-height:1.5;
+      white-space:normal;
+    }
+
+    .hero-title{
+      font-size:25px;
+      line-height:1.25;
+    }
+
+    .hero-subtitle{
+      font-size:16px;
+      margin-top:4px;
+    }
+
+    .hero-stat-icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      font-size:23px;
+    }
+
+    .hero-stat-value{
+      font-size:20px;
+    }
+
+    .topbar-title{
+      font-size:18px;
+    }
+
+    .topbar-subtitle{
+      font-size:12px;
+    }
+
+    .brand-mark{
+      width:46px;
+      height:46px;
+      border-radius:15px;
+    }
+
+    .card-title{
+      font-size:22px;
+    }
+
+    .card-kicker{
+      font-size:12px;
+    }
+
+    .form-label{
+      font-size:15px;
+    }
+
+    .app-input,
+    .grade-input{
+      min-height:52px;
+      font-size:16px;
+      border-radius:14px;
+    }
+
+    .condition-list{
+      font-size:15px;
+    }
+
+    .notice-title{
+      font-size:18px;
+    }
+
+    .notice-body{
+      font-size:14px;
+    }
+
+    .welcome-icon-main{
+      width:78px;
+      height:78px;
+      font-size:38px;
+      border-radius:24px;
+    }
+
+    .welcome-teacher-name{
+      width:100%;
+      font-size:16px;
+      white-space:normal;
+    }
+
+    .app-footer{
+      font-size:12px;
+      line-height:1.6;
+      padding:10px 8px;
+    }
+
+    /* DataTables control layout on mobile */
+    div.dt-container .dt-layout-row,
+    div.dt-container .dt-layout-cell{
+      display:block !important;
+      width:100% !important;
+      text-align:left !important;
+    }
+
+    div.dt-container .dt-search,
+    div.dt-container .dt-length,
+    div.dt-container .dt-info,
+    div.dt-container .dt-paging{
+      width:100%;
+      margin:8px 0 !important;
+      text-align:left !important;
+    }
+
+    div.dt-container .dt-search input{
+      width:100% !important;
+      margin-left:0 !important;
+      min-height:44px !important;
+    }
+
+    div.dt-container .dt-length select{
+      min-height:44px !important;
+    }
+
+    /* เปลี่ยนตารางเป็น Card เฉพาะมือถือ */
+    .table-wrap{
+      overflow-x:visible !important;
+      border-radius:0;
+    }
+
+    div.dt-container{
+      overflow-x:visible !important;
+    }
+
+    table.table-modern,
+    table.dataTable.table-modern{
+      border:0 !important;
+      table-layout:auto !important;
+    }
+
+    table.table-modern colgroup,
+    table.table-modern thead{
+      display:none !important;
+    }
+
+    table.table-modern,
+    table.table-modern tbody,
+    table.table-modern tr,
+    table.table-modern td{
+      display:block !important;
+      width:100% !important;
+      max-width:100% !important;
+    }
+
+    table.table-modern tbody tr{
+      margin:0 0 12px;
+      padding:12px;
+      border-radius:18px;
+      background:#ffffff !important;
+      border:1px solid #dfeaf6;
+      box-shadow:0 10px 24px rgba(18,52,88,.08);
+    }
+
+    table.table-modern tbody td{
+      display:flex !important;
+      align-items:flex-start !important;
+      justify-content:space-between !important;
+      gap:12px;
+      padding:9px 4px !important;
+      border-bottom:1px dashed #dfe8f2 !important;
+      text-align:right !important;
+      font-size:14px !important;
+      white-space:normal !important;
+      overflow:visible !important;
+    }
+
+    table.table-modern tbody td:last-child{
+      border-bottom:0 !important;
+      padding-bottom:0 !important;
+    }
+
+    table.table-modern tbody td::before{
+      flex:0 0 42%;
+      text-align:left;
+      color:var(--muted);
+      font-weight:700;
+      white-space:normal;
+      content:"";
+    }
+
+    .truncate-1line,
+    .subject-cell{
+      white-space:normal !important;
+      overflow:visible !important;
+      text-overflow:clip !important;
+      text-align:right;
+    }
+
+    .student-name-2line{
+      align-items:flex-end;
+      text-align:right;
+    }
+
+    .student-name-2line .first-name,
+    .student-name-2line .last-name{
+      white-space:normal;
+      overflow:visible;
+      text-overflow:clip;
+    }
+
+    .action-group{
+      justify-content:flex-end;
+      width:100%;
+    }
+
+    .mini-btn{
+      padding:8px 10px;
+      font-size:12px;
+    }
+
+    .status-pill{
+      font-size:12px;
+      padding:6px 10px;
+    }
+
+    /* manageTable labels */
+    #manageTable td:nth-child(1)::before{content:"รหัสครู";}
+    #manageTable td:nth-child(2)::before{content:"เลข นร.";}
+    #manageTable td:nth-child(3)::before{content:"ชื่อ-สกุล";}
+    #manageTable td:nth-child(4)::before{content:"ชั้น/ห้อง";}
+    #manageTable td:nth-child(5)::before{content:"รหัสวิชา";}
+    #manageTable td:nth-child(6)::before{content:"ชื่อวิชา";}
+    #manageTable td:nth-child(7)::before{content:"เกรดเดิม";}
+    #manageTable td:nth-child(8)::before{content:"เกรดใหม่";}
+    #manageTable td:nth-child(9)::before{content:"สถานะ";}
+    #manageTable td:nth-child(10)::before{content:"จัดการ";}
+
+    /* allRecordsTable labels */
+    #allRecordsTable td:nth-child(1)::before{content:"รหัสครู";}
+    #allRecordsTable td:nth-child(2)::before{content:"ครู/วันเวลาที่ส่ง";}
+    #allRecordsTable td:nth-child(3)::before{content:"เลข นร.";}
+    #allRecordsTable td:nth-child(4)::before{content:"ชื่อ-สกุล";}
+    #allRecordsTable td:nth-child(5)::before{content:"ชั้น/ห้อง";}
+    #allRecordsTable td:nth-child(6)::before{content:"รหัสวิชา";}
+    #allRecordsTable td:nth-child(7)::before{content:"ชื่อวิชา";}
+    #allRecordsTable td:nth-child(8)::before{content:"เกรดเดิม";}
+    #allRecordsTable td:nth-child(9)::before{content:"เกรดใหม่";}
+    #allRecordsTable td:nth-child(10)::before{content:"สถานะ";}
+
+    /* approvalTable labels */
+    #approvalTable td:nth-child(1)::before{content:"ID";}
+    #approvalTable td:nth-child(2)::before{content:"ชื่อ-สกุล";}
+    #approvalTable td:nth-child(3)::before{content:"ชั้น/ห้อง";}
+    #approvalTable td:nth-child(4)::before{content:"ชื่อวิชา";}
+    #approvalTable td:nth-child(5)::before{content:"ภาค/ปี";}
+    #approvalTable td:nth-child(6)::before{content:"เกรดเดิม";}
+    #approvalTable td:nth-child(7)::before{content:"เกรดใหม่";}
+    #approvalTable td:nth-child(8)::before{content:"สถานะ";}
+    #approvalTable td:nth-child(9)::before{content:"อนุมัติ";}
+  }
+
+  @media (max-width: 420px){
+    .app-shell{
+      padding:8px;
+    }
+
+    .glass-card{
+      padding:15px;
+      border-radius:20px;
+    }
+
+    .hero-title{
+      font-size:23px;
+    }
+
+    .card-title{
+      font-size:20px;
+    }
+
+    .nav-pill{
+      font-size:13px;
+      padding:9px 10px;
+    }
+
+    .msg-overlay-title{
+      font-size:21px;
+    }
+
+    .msg-overlay-text{
+      font-size:15px;
+    }
+  }
+
+</style>
 </head>
 <body>
 
