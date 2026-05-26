@@ -1802,6 +1802,214 @@
     }
   }
 
+
+  /* =====================================================
+     MOBILE MANAGE CARD V2 - สวยขึ้น / ไม่แตกบรรทัด / อ่านง่าย
+     ===================================================== */
+  @media (max-width: 767.98px){
+    #pageManage .table-card{
+      padding:12px;
+      background:rgba(255,255,255,.82);
+      border-radius:24px;
+    }
+
+    #pageManage .table-card-head{
+      align-items:center;
+    }
+
+    #pageManage .table-card-head .card-title{
+      font-size:21px;
+      line-height:1.3;
+    }
+
+    #pageManage .table-wrap,
+    #pageManage div.dt-container{
+      overflow:visible !important;
+      border-radius:0 !important;
+    }
+
+    #pageManage #manageTable,
+    #pageManage #manageTable tbody{
+      display:block !important;
+      width:100% !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+
+    #pageManage #manageTable tbody tr{
+      position:relative;
+      display:grid !important;
+      grid-template-columns:1fr 1fr;
+      gap:10px 12px;
+      margin:0 0 16px !important;
+      padding:18px 16px 16px !important;
+      border-radius:26px !important;
+      background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%) !important;
+      border:1px solid rgba(218,231,245,.95) !important;
+      border-left:1px solid rgba(218,231,245,.95) !important;
+      box-shadow:0 14px 34px rgba(22,50,84,.12) !important;
+      overflow:hidden;
+    }
+
+    #pageManage #manageTable tbody tr::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      right:0;
+      height:5px;
+      background:linear-gradient(90deg,#1f6fe5,#11b6d9);
+    }
+
+    #pageManage #manageTable tbody td{
+      display:block !important;
+      width:auto !important;
+      max-width:100% !important;
+      padding:0 !important;
+      border:0 !important;
+      background:transparent !important;
+      text-align:left !important;
+      color:var(--text) !important;
+      overflow:visible !important;
+      white-space:normal !important;
+      word-break:keep-all !important;
+      overflow-wrap:break-word !important;
+      line-height:1.45 !important;
+    }
+
+    #pageManage #manageTable tbody td::before{
+      display:block !important;
+      width:auto !important;
+      max-width:100% !important;
+      margin:0 0 3px !important;
+      color:#7b8fa7 !important;
+      font-size:11px !important;
+      line-height:1.25 !important;
+      font-weight:700 !important;
+      letter-spacing:.2px;
+      text-align:left !important;
+      white-space:nowrap !important;
+      flex:unset !important;
+    }
+
+    #pageManage #manageTable .truncate-1line,
+    #pageManage #manageTable .subject-cell{
+      display:block !important;
+      width:100% !important;
+      white-space:normal !important;
+      overflow:visible !important;
+      text-overflow:clip !important;
+      text-align:left !important;
+      word-break:keep-all !important;
+      overflow-wrap:break-word !important;
+    }
+
+    #pageManage #manageTable .student-name-2line{
+      align-items:flex-start !important;
+      text-align:left !important;
+      gap:0;
+    }
+
+    #pageManage #manageTable .student-name-2line .first-name,
+    #pageManage #manageTable .student-name-2line .last-name{
+      white-space:normal !important;
+      overflow:visible !important;
+      text-overflow:clip !important;
+      text-align:left !important;
+    }
+
+    /* จัดลำดับข้อมูลใน card */
+    #pageManage #manageTable td:nth-child(3){
+      grid-column:1 / -1;
+      order:1;
+      padding-bottom:10px !important;
+      border-bottom:1px dashed #dfe8f2 !important;
+      font-size:20px !important;
+      font-weight:800 !important;
+    }
+    #pageManage #manageTable td:nth-child(3)::before{content:"นักเรียน" !important;}
+
+    #pageManage #manageTable td:nth-child(6){
+      grid-column:1 / -1;
+      order:2;
+      padding:10px 12px !important;
+      border-radius:18px !important;
+      background:#f0f6ff !important;
+      font-size:17px !important;
+      font-weight:700 !important;
+    }
+    #pageManage #manageTable td:nth-child(6)::before{content:"รายวิชา" !important;}
+
+    #pageManage #manageTable td:nth-child(2){order:3;}
+    #pageManage #manageTable td:nth-child(2)::before{content:"เลข นร." !important;}
+
+    #pageManage #manageTable td:nth-child(4){order:4;}
+    #pageManage #manageTable td:nth-child(4)::before{content:"ชั้น/ห้อง" !important;}
+
+    #pageManage #manageTable td:nth-child(5){order:5;}
+    #pageManage #manageTable td:nth-child(5)::before{content:"รหัสวิชา" !important;}
+
+    #pageManage #manageTable td:nth-child(1){order:6;}
+    #pageManage #manageTable td:nth-child(1)::before{content:"รหัสครู" !important;}
+
+    #pageManage #manageTable td:nth-child(7){order:7;}
+    #pageManage #manageTable td:nth-child(7)::before{content:"เกรดเดิม" !important;}
+
+    #pageManage #manageTable td:nth-child(8){order:8;}
+    #pageManage #manageTable td:nth-child(8)::before{content:"เกรดใหม่" !important;}
+
+    #pageManage #manageTable td:nth-child(9){
+      grid-column:1 / -1;
+      order:9;
+      display:flex !important;
+      align-items:center !important;
+      justify-content:space-between !important;
+      gap:12px;
+      padding-top:8px !important;
+      border-top:1px dashed #dfe8f2 !important;
+    }
+    #pageManage #manageTable td:nth-child(9)::before{
+      content:"สถานะ" !important;
+      margin:0 !important;
+    }
+
+    #pageManage #manageTable td:nth-child(10){
+      grid-column:1 / -1;
+      order:10;
+      padding-top:10px !important;
+    }
+    #pageManage #manageTable td:nth-child(10)::before{display:none !important;}
+    #pageManage #manageTable td:nth-child(10):empty{display:none !important;}
+
+    #pageManage .status-pill{
+      font-size:13px !important;
+      padding:8px 14px !important;
+      border-radius:999px !important;
+      box-shadow:0 8px 18px rgba(23,112,77,.12);
+    }
+
+    #pageManage .action-group{
+      display:grid !important;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      width:100%;
+      justify-content:stretch !important;
+    }
+
+    #pageManage .mini-btn{
+      width:100% !important;
+      min-height:44px !important;
+      border-radius:15px !important;
+      font-size:14px !important;
+      box-shadow:0 10px 20px rgba(22,50,84,.08);
+    }
+
+    #pageManage div.dt-container .dt-info,
+    #pageManage div.dt-container .dt-paging{
+      text-align:center !important;
+    }
+  }
+
 </style>
 </head>
 <body>
