@@ -1912,27 +1912,27 @@
   // เปลี่ยนเป็น URL /exec ของ Apps Script หรือ URL Cloudflare Worker ของคุณ
   const API_URL = 'https://script.google.com/a/macros/thamai.ac.th/s/AKfycbxl_pbD03W91Oip2uc9Uy7TYN566ez0HvVBEHzbfeUC-Yb63hIv6UrhJKGNJPpoR4pn/exec';
 
-  async function apiCall(action, payload = {}) {
-    if (!API_URL || API_URL === 'https://script.google.com/a/macros/thamai.ac.th/s/AKfycbxl_pbD03W91Oip2uc9Uy7TYN566ez0HvVBEHzbfeUC-Yb63hIv6UrhJKGNJPpoR4pn/exec') {
-      throw new Error('กรุณาตั้งค่า API_URL ก่อนใช้งานระบบ');
-    }
-
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
-      },
-      body: JSON.stringify({ action, payload })
-    });
-
-    const result = await response.json();
-
-    if (!result.ok) {
-      throw new Error(result.message || 'เกิดข้อผิดพลาด');
-    }
-
-    return result.data;
+async function apiCall(action, payload = {}) {
+  if (!API_URL) {
+    throw new Error('กรุณาตั้งค่า API_URL ก่อนใช้งานระบบ');
   }
+
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8'
+    },
+    body: JSON.stringify({ action, payload })
+  });
+
+  const result = await response.json();
+
+  if (!result.ok) {
+    throw new Error(result.message || 'เกิดข้อผิดพลาด');
+  }
+
+  return result.data;
+}
 
   const state = {
     teacher: null,
